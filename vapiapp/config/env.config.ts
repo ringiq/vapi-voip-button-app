@@ -1,7 +1,7 @@
 export const envConfig = {
   vapi: {
     apiUrl: process.env.NEXT_PUBLIC_VAPI_API_URL ?? "https://api.vapi.ai",
-    token: process.env.NEXT_PUBLIC_VAPI_WEB_TOKEN ?? "1ec9d220-ea8e-4df7-b82c-967f77c59d4e",
+    token: process.env.NEXT_PUBLIC_VAPI_WEB_TOKEN ?? "79b3bae7-b135-4288-bebd-c747ff2a91b1", // TSO Midlothian assistance code
   },
 };
 

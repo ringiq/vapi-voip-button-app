@@ -14,12 +14,13 @@ function Assistant() {
                 <Display/>
             </div>
             <div className="user-input">
+
+                <p className="text-md mb-5 text-center">TSO Midlothian</p>
                 <AssistantButton
                     audioLevel={audioLevel}
                     callStatus={callStatus}
                     toggleCall={toggleCall}
                 ></AssistantButton>
-                <AssistantStatus callStatus={callStatus}/>
             </div>
         </>
     );
