@@ -1,0 +1,7 @@
+{
+    "app_id": "vapivoipapp-uhehlld",
+    "config_version": 20210101,
+    "name": "VapiVoipApp",
+    "provider_region": "aws-us-east-1",
+    "deployment_model": "LOCAL"
+}
