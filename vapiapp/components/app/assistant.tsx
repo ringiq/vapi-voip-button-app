@@ -15,7 +15,7 @@ function Assistant() {
             </div>
             <div className="user-input">
 
-                <p className="text-md mb-5 text-center">TSO Midlothian</p>
+                <p className="text-md mb-5 text-center">Demo Assistant</p>
                 <AssistantButton
                     audioLevel={audioLevel}
                     callStatus={callStatus}
