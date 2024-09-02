@@ -2,6 +2,8 @@
 
 import { assistant } from "@/assistants/assistant";
 
+import { envConfig } from "@/config/env.config";
+
 import {
   Message,
   MessageTypeEnum,
@@ -30,6 +32,8 @@ export function useVapi() {
     useState<TranscriptMessage | null>(null);
 
   const [audioLevel, setAudioLevel] = useState(0);
+
+  // console.log(envConfig);
 
   useEffect(() => {
     const onSpeechStart = () => setIsSpeechActive(true);
@@ -94,7 +98,7 @@ export function useVapi() {
     setCallStatus(CALL_STATUS.LOADING);
     console.log('before start');
     // const response = vapi.start(assistant);
-    const response = vapi.start('fcc7129d-2556-4f33-9490-6c293332f213');
+    const response = vapi.start(envConfig.vapi.assistantId);
 
     response.then((res) => {
       console.log("call", res);
