@@ -15,7 +15,7 @@
             },
             "insert": false,
             "delete": false,
-            "search": true,
+            "search": false,
             "fields": {
                 "name": {
                     "read": true,
