@@ -3,30 +3,17 @@
     "collection": "offices",
     "roles": [
         {
-            "name": "readOnlyVoipVapiData",
+            "name": "readAll",
             "apply_when": {},
             "document_filters": {
-                "read": {
-                    "name": true,
-                    "vapiVoip": true
-                },
+                "read": true,
                 "write": false
             },
             "insert": false,
             "delete": false,
             "search": true,
             "read": true,
-            "write": false,
-            "fields": {
-                "name": {
-                    "read": true,
-                    "write": false
-                },
-                "vapiVoip": {
-                    "read": true,
-                    "write": false
-                }
-            }
+            "write": false
         }
     ]
 }
