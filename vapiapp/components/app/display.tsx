@@ -1,6 +1,6 @@
 import { shows } from "@/data/shows";
 import { Message, MessageTypeEnum } from "@/lib/types/conversation.type";
-import { vapi } from "@/lib/vapi.sdk";
+import { vapi } from "@/lib/_____vapi.sdk";
 import React, { useEffect } from "react";
 import { ShowsComponent } from "./shows";
 import { Ticket } from "./ticket";

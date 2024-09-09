@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Message, MessageTypeEnum } from "@/lib/types/conversation.type";
 import { shows } from "@/data/shows";
-import { vapi } from "@/lib/vapi.sdk";
+import { vapi } from "@/lib/_____vapi.sdk";
 
 interface ShowsComponentProps {
   showList: Array<(typeof shows)[number]>;

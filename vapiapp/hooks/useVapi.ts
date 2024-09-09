@@ -11,8 +11,11 @@ import {
   TranscriptMessageTypeEnum,
 } from "@/lib/types/conversation.type";
 import { useEffect, useState } from "react";
+import Vapi from "@vapi-ai/web";
 // import { MessageActionTypeEnum, useMessages } from "./useMessages";
-import { vapi } from "@/lib/vapi.sdk";
+
+
+// import { vapi } from "@/lib/vapi.sdk";
 
 export enum CALL_STATUS {
   INACTIVE = "inactive",
@@ -20,7 +23,13 @@ export enum CALL_STATUS {
   LOADING = "loading",
 }
 
-export function useVapi() {
+interface UseVapiParams {
+  vapi: Vapi;
+  assistantId: string;
+}
+
+export function useVapi({ vapi, assistantId }: UseVapiParams) {
+
   const [isSpeechActive, setIsSpeechActive] = useState(false);
   const [callStatus, setCallStatus] = useState<CALL_STATUS>(
     CALL_STATUS.INACTIVE
@@ -98,7 +107,8 @@ export function useVapi() {
     setCallStatus(CALL_STATUS.LOADING);
     console.log('before start');
     // const response = vapi.start(assistant);
-    const response = vapi.start(envConfig.vapi.assistantId);
+    // const response = vapi.start(envConfig.vapi.assistantId);
+    const response = vapi.start(assistantId);
 
     response.then((res) => {
       console.log("call", res);

@@ -1,5 +1,5 @@
 import { shows } from "@/data/shows";
-import { vapi } from "../../lib/vapi.sdk";
+import { vapi } from "../../lib/_____vapi.sdk";
 import { MessageTypeEnum } from "../../lib/types/conversation.type";
 
 interface TicketProps {
