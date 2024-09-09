@@ -1,0 +1,32 @@
+{
+    "database": "ringiq",
+    "collection": "offices",
+    "roles": [
+        {
+            "name": "readOnlyVoipVapiData",
+            "apply_when": {},
+            "document_filters": {
+                "read": {
+                    "name": true,
+                    "vapiVoip": true
+                },
+                "write": false
+            },
+            "insert": false,
+            "delete": false,
+            "search": true,
+            "read": true,
+            "write": false,
+            "fields": {
+                "name": {
+                    "read": true,
+                    "write": false
+                },
+                "vapiVoip": {
+                    "read": true,
+                    "write": false
+                }
+            }
+        }
+    ]
+}
