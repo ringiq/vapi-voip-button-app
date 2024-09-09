@@ -5,7 +5,9 @@
         {
             "name": "readOnlyVapiData",
             "apply_when": {
-                "%%user.providerType": "anon-user"
+                "%%user.id": {
+                    "%exists": true
+                }
             },
             "document_filters": {
                 "read": true,
