@@ -3,8 +3,13 @@
     "collection": "offices",
     "roles": [
         {
-            "name": "readAll",
-            "apply_when": {},
+            "name": "readOnlyVapiData",
+            "apply_when": {
+                "%%user.id": {
+                    "$exists": true
+                },
+                "%%user.provider": "anon-user"
+            },
             "document_filters": {
                 "read": true,
                 "write": false
