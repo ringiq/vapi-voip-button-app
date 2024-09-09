@@ -16,8 +16,16 @@
             "insert": false,
             "delete": false,
             "search": true,
-            "read": true,
-            "write": false
+            "fields": {
+                "name": {
+                    "read": true,
+                    "write": false
+                },
+                "vapiVoip": {
+                    "read": true,
+                    "write": false
+                }
+            }
         }
     ]
 }
