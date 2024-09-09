@@ -8,7 +8,7 @@
                 "%%user.id": {
                     "$exists": true
                 },
-                "%%user.provider": "anon-user"
+                "%%user.providerType": "anon-user"
             },
             "document_filters": {
                 "read": true,
