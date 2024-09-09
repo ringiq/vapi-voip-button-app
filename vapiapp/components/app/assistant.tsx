@@ -2,10 +2,7 @@
 
 import {useVapi} from "@/hooks/useVapi";
 import {AssistantButton} from "./assistantButton";
-import {AssistantStatus} from "./assistantStatus";
-import {Display} from "./display";
 import Vapi from "@vapi-ai/web";
-import {useEffect, useState} from "react";
 
 interface VapiVoip {
     enabled: boolean;
