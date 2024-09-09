@@ -7,9 +7,6 @@
             "apply_when": {
                 "%%user.id": {
                     "%exists": true
-                },
-                "%%user.provider_type": {
-                    "%exists": true
                 }
             },
             "document_filters": {
