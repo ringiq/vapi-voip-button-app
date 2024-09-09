@@ -8,7 +8,7 @@
                 "%%user.id": {
                     "%exists": true
                 },
-                "%%user.provider": {
+                "%%user.provider_type": {
                     "%exists": true
                 }
             },
