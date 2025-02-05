@@ -16,12 +16,8 @@ COPY . .
 # Build the Next.js app
 RUN npm run build
 
-# Copy standalone output and static assets
-RUN mkdir -p /app/.next/static && cp -r .next/static /app/.next/static
-RUN mkdir -p /app/public && cp -r public /app/public
-
-# Expose the port
+# Expose the port Next.js runs on
 EXPOSE 3000
 
-# Start the application
+# Start the application in standalone mode
 CMD ["node", ".next/standalone/server.js"]
