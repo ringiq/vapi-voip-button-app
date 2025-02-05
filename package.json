@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && mkdir .next/standalone/_next && mv .next/static .next/standalone/_next",
     "start": "next start",
     "lint": "next lint",
     "export": "rm -rf ../hosting/files && mkdir ../hosting/files && mv out/* ../hosting/files/"
