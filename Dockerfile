@@ -1,10 +1,10 @@
-# Use official Node.js runtime
+# Use the official Node.js runtime
 FROM node:18-alpine
 
-# Set the working directory
+# Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json
+# Copy package files
 COPY package.json package-lock.json ./
 
 # Install dependencies
@@ -16,10 +16,7 @@ COPY . .
 # Build the Next.js app
 RUN npm run build
 
-# Ensure `.next` folder is included
-RUN cp -r .next /app/.next
-
-# Expose the port
+# Expose the port Next.js runs on
 EXPOSE 3000
 
 # Start the application in standalone mode
