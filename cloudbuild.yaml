@@ -22,5 +22,8 @@ steps:
       - "us-central1"
       - "--allow-unauthenticated"
 
+options:
+  logging: CLOUD_LOGGING_ONLY
+
 images:
   - "gcr.io/$PROJECT_ID/nextjs-app"
