@@ -4,16 +4,12 @@ import {useVapi} from "@/hooks/useVapi";
 import {AssistantButton} from "./assistantButton";
 import Vapi from "@vapi-ai/web";
 
-interface VapiVoip {
+interface Office {
+    // _id: string;
+    // name: string;
     enabled: boolean;
     assistantId: string;
     token: string;
-}
-
-interface Office {
-    _id: string;
-    name: string;
-    vapiVoip?: VapiVoip;
 }
 
 interface AssistantProps {
@@ -30,12 +26,11 @@ function Assistant({ error, loading, office, vapi }: AssistantProps) {
     if (error) return;
     if (loading) return;
     if (!office) return;
-    if (!office.vapiVoip) return;
-    if (!office.vapiVoip?.token) return;
-    if (!office.vapiVoip?.assistantId) return;
+    if (!office?.token) return;
+    if (!office?.assistantId) return;
 
-    const token  = office.vapiVoip?.token;
-    const assistantId  = office.vapiVoip?.assistantId;
+    const token  = office?.token;
+    const assistantId  = office?.assistantId;
 
 
     const {toggleCall, callStatus, audioLevel} = useVapi({

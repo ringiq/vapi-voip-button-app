@@ -1,16 +1,14 @@
 import {useRouter} from 'next/router';
 import {useEffect, useState} from 'react';
 
-import {useRealm} from '../context/RealmContext';
 import {Assistant} from "../components/app/assistant";
 import {Inter} from "next/font/google";
 import Vapi from "@vapi-ai/web";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const Home = () => {
-      const {realmApp, user, loading: realmLoading} = useRealm();
 
+const Home = () => {
       const router = useRouter();
       const {officeId} = router.query;
 
@@ -20,38 +18,40 @@ const Home = () => {
       const [error, setError] = useState(null);  // State to handle errors
 
       useEffect(() => {
-            if (!realmApp) return;
-            if (!user) return;
-            if (!officeId) return;
-            if (realmLoading) return;
+          if (!officeId) return;
+          console.log(officeId);
 
-            console.log(user);
-
-            const fetchOffice = async () => {
+          async function fetchOfficeToken() {
               try {
-                const client = realmApp.currentUser?.mongoClient('mongodb-atlas');
+                  setLoading(true);
 
-                const db = client.db(process.env.NEXT_PUBLIC_REALM_DB_NAME);
-                const collection = db.collection('offices');
-                const officeData = await collection.findOne({_id: officeId});
+                  const response = await fetch(`/api/office/${officeId}`);
+                  if (!response.ok) {
+                      throw new Error(`HTTP Error! Status: ${response.status}`);
+                  }
 
-                if (officeData) {
-                  const vapi = new Vapi(officeData.vapiVoip?.token);
+                  const officeData = await response.json();
 
-                  setOffice(officeData);
-                  setVapiConnection(vapi);
-                } else {
-                  console.error('Office not found');
-                }
+                  if (officeData) {
+                    const vapi = new Vapi(officeData?.token);
+
+                    setOffice(officeData);
+                    setVapiConnection(vapi);
+                  } else {
+                      throw new Error("Vapi credentials not found");
+                  }
+
               } catch (error) {
-                console.error('Error fetching office:', error);
+                  console.error('Error fetching office:', error);
+                  setError(error);
               } finally {
-                setLoading(false);
+                  setLoading(false);
               }
-            };
+          }
 
-            fetchOffice();  // Call the function to fetch data
-          }, [realmApp, user, officeId, realmLoading]
+          fetchOfficeToken();
+
+          }, [officeId]
       );
 
       if (loading) {
