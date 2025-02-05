@@ -1,12 +1,17 @@
 # Use official Node.js runtime
 FROM node:18-alpine
 
-# Set the working directory inside the container
+# Set working directory
 WORKDIR /app
 
-# Copy package.json and install dependencies
+# Copy package files
 COPY package.json package-lock.json ./
-RUN npm install --omit=dev
+
+# Install dependencies
+RUN npm install
+
+# Explicitly install TypeScript before building
+RUN npm install --save-dev typescript @types/node
 
 # Copy the rest of the application
 COPY . .
