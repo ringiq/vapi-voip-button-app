@@ -16,9 +16,16 @@ COPY . .
 # Build the Next.js app
 RUN npm run build
 
-# Copy only necessary files
-COPY --from=build /app/.next/standalone ./
-COPY --from=build /app/.next/static ./.next/static
+# Create a lightweight image for production
+FROM node:18-alpine AS runner
+
+WORKDIR /app
+
+# Copy only the necessary files from the builder stage
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/public ./public 
+
 
 # Expose the port Next.js runs on
 EXPOSE 3000
