@@ -15,7 +15,10 @@ export default async function handler(req, res) {
 		const client = await clientPromise;
 		const db = client.db("ringiq");
 		const data = await db.collection("offices").find({'_id': officeId}).toArray();
-		if ( data[0]?.vapiVoip?.enabled === true ) {
+		if ( !data[0] ) {
+			res.setHeader("X-Error-Message", "Office Not Found");
+			res.status(400).end();
+		} else if ( data[0]?.vapiVoip?.enabled === true ) {
 			res.status(200).json(data[0]?.vapiVoip);
 		} else {
 			res.status(400).json({ message: "Vapi token missing" });

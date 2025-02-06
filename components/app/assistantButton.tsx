@@ -35,12 +35,6 @@ const AssistantButton = ({
             audioLevel * 10
         }px ${color}, 0px 0px 26px 4px ${color} inset`,
         backgroundColor: 'transparent',
-        // backgroundColor:
-        //     callStatus === CALL_STATUS.ACTIVE
-        //         ? "#E16269"
-        //         : callStatus === CALL_STATUS.LOADING
-        //             ? "#F2B5A0"
-        //             : "#A5D0A3",
         cursor: "pointer",
     };
 
@@ -64,13 +58,6 @@ const AssistantButton = ({
             onMouseLeave={handleMouseLeave}
 
             style={{ ...buttonStyle, ...(isHovered && buttonStyleHovered) }}
-            // className={`transition ease-in-out ${
-            //     callStatus === CALL_STATUS.ACTIVE
-            //         ? "bg-red-500 hover:bg-red-700"
-            //         : callStatus === CALL_STATUS.LOADING
-            //             ? "bg-orange-500 hover:bg-orange-700"
-            //             : "bg-green-500 hover:bg-green-700"
-            // } flex items-center justify-center`}
             className={`transition ease-in-out flex items-center justify-center`}
             onClick={toggleCall}
         >

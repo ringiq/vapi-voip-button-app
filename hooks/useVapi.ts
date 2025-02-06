@@ -1,9 +1,5 @@
 "use client";
 
-import { assistant } from "@/assistants/assistant";
-
-import { envConfig } from "@/config/env.config";
-
 import {
   Message,
   MessageTypeEnum,
@@ -12,10 +8,6 @@ import {
 } from "@/lib/types/conversation.type";
 import { useEffect, useState } from "react";
 import Vapi from "@vapi-ai/web";
-// import { MessageActionTypeEnum, useMessages } from "./useMessages";
-
-
-// import { vapi } from "@/lib/vapi.sdk";
 
 export enum CALL_STATUS {
   INACTIVE = "inactive",
@@ -42,22 +34,20 @@ export function useVapi({ vapi, assistantId }: UseVapiParams) {
 
   const [audioLevel, setAudioLevel] = useState(0);
 
-  // console.log(envConfig);
-
   useEffect(() => {
     const onSpeechStart = () => setIsSpeechActive(true);
     const onSpeechEnd = () => {
-      console.log("Speech has ended");
+      // console.log("Speech has ended");
       setIsSpeechActive(false);
     };
 
     const onCallStartHandler = () => {
-      console.log("Call has started");
+      // console.log("Call has started");
       setCallStatus(CALL_STATUS.ACTIVE);
     };
 
     const onCallEnd = () => {
-      console.log("Call has stopped");
+      // console.log("Call has stopped");
       setCallStatus(CALL_STATUS.INACTIVE);
     };
 
@@ -66,7 +56,7 @@ export function useVapi({ vapi, assistantId }: UseVapiParams) {
     };
 
     const onMessageUpdate = (message: Message) => {
-      console.log("message", message);
+      // console.log("message", message);
       if (
         message.type === MessageTypeEnum.TRANSCRIPT &&
         message.transcriptType === TranscriptMessageTypeEnum.PARTIAL
@@ -105,13 +95,13 @@ export function useVapi({ vapi, assistantId }: UseVapiParams) {
 
   const start = async () => {
     setCallStatus(CALL_STATUS.LOADING);
-    console.log('before start');
+    // console.log('before start');
     // const response = vapi.start(assistant);
     // const response = vapi.start(envConfig.vapi.assistantId);
     const response = vapi.start(assistantId);
 
     response.then((res) => {
-      console.log("call", res);
+      // console.log("call", res);
     });
   };
 
