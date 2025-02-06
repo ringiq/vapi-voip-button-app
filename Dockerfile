@@ -1,5 +1,5 @@
 # Use the official Node.js runtime
-FROM node:18-alpine
+FROM node:18-alpine AS builder
 
 # Set working directory
 WORKDIR /app
@@ -24,7 +24,7 @@ WORKDIR /app
 # Copy only the necessary files from the builder stage
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
-COPY --from=builder /app/public ./public 
+COPY --from=builder /app/public ./public
 
 
 # Expose the port Next.js runs on
